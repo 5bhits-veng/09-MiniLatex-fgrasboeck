@@ -1,0 +1,23 @@
+% Abschnitt 2.2: Modell für die Ladezeit (mit Gleichung und Aufzählung)
+\subsection{Modell für die Ladezeit}
+\label{sec:modell}
+
+Fasst man die Schritte aus Abbildung~\ref{fig:ablauf} zusammen, ergibt sich
+für die Ladezeit $t_\mathrm{L}$ näherungsweise
+\begin{equation}
+  t_\mathrm{L} = t_\mathrm{DNS} + t_\mathrm{V} + t_\mathrm{S} + \frac{S}{B}\,.
+  \label{eq:ladezeit}
+\end{equation}
+Dabei ist $t_\mathrm{DNS}$ die Dauer der Namensauflösung, $t_\mathrm{V}$ die
+Dauer des Verbindungsaufbaus, $t_\mathrm{S}$ die Bearbeitungszeit des Servers,
+$S$ die übertragene Datenmenge und $B$ die Datenrate der Verbindung. Das
+Modell vernachlässigt parallele Übertragungen und die Zeit für das Rendern im
+Browser, zeigt aber, wo sich ansetzen lässt:
+\begin{itemize}
+  \item Datenmenge $S$ verringern, etwa durch Komprimierung, moderne
+        Bildformate und das Entfernen ungenutzter Skripte.
+  \item Wiederholte Übertragungen vermeiden, indem der Browser unveränderte
+        Dateien aus dem Cache lädt.
+  \item Wartezeiten $t_\mathrm{V}$ und $t_\mathrm{S}$ senken, zum Beispiel
+        durch Server in der Nähe der Nutzer und durch vorab erzeugte Seiten.
+\end{itemize}
