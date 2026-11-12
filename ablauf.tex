@@ -1,0 +1,35 @@
+% Abschnitt 2 und 2.1: Ablauf eines Seitenaufrufs (mit Abbildung)
+\section{Vom Seitenaufruf zur Antwort}
+\label{sec:ablauf}
+
+\subsection{Ablauf eines Seitenaufrufs}
+\label{sec:schritte}
+
+Abbildung~\ref{fig:ablauf} zeigt die Schritte, die nach Eingabe einer Adresse
+ablaufen. Zuerst ermittelt der Browser über einen DNS-Server die IP-Adresse
+des Webservers. Danach baut er eine Verbindung auf und sendet eine Anfrage mit
+der Methode \texttt{GET}. Der Server antwortet mit einem Statuscode, etwa
+\texttt{200} bei Erfolg oder \texttt{404} bei einer nicht gefundenen
+Ressource~\cite{rfc9110}, und liefert das HTML-Dokument. Für jede darin
+eingebundene Datei (Stylesheets, Skripte, Bilder) folgt eine weitere Anfrage.
+
+\begin{figure}[htb]
+  \centering
+  \begin{tikzpicture}[>={Stealth[length=2.2mm]}, font=\small]
+    % Teilnehmer
+    \foreach \x/\name in {0/Browser, 5/DNS-Server, 10/Webserver} {
+      \node[draw, rounded corners, minimum width=2.3cm, minimum height=0.7cm]
+        at (\x,0) {\name};
+      \draw[dashed] (\x,-0.35) -- (\x,-4.9);
+    }
+    % Nachrichten
+    \draw[->] (0,-0.9) -- node[above] {1. Namensanfrage} (5,-0.9);
+    \draw[->] (5,-1.6) -- node[above] {2. IP-Adresse} (0,-1.6);
+    \draw[<->] (0,-2.5) -- node[above, pos=0.75] {3. Verbindungsaufbau} (10,-2.5);
+    \draw[->] (0,-3.4) -- node[above, pos=0.75] {4. Anfrage (\texttt{GET})} (10,-3.4);
+    \draw[->] (10,-4.3) -- node[above, pos=0.25] {5. Antwort (\texttt{200}, HTML)} (0,-4.3);
+  \end{tikzpicture}
+  \caption{Ablauf eines Seitenaufrufs zwischen Browser, DNS-Server und
+           Webserver (eigene Darstellung).}
+  \label{fig:ablauf}
+\end{figure}
