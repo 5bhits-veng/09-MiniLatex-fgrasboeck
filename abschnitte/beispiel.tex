@@ -1,0 +1,35 @@
+% Abschnitt 3: Beispielrechnung (mit Tabelle)
+\section{Beispielrechnung}
+\label{sec:beispiel}
+
+Tabelle~\ref{tab:beispiel} listet die Ressourcen einer Beispielseite und ihre
+Übertragungszeit $S/B$ bei einer Datenrate von
+$B = \SI{10}{\mega\bit\per\second}$ auf (\SI{1}{\kilo\byte} entspricht
+\SI{8}{\kilo\bit}). Die Bilder verursachen fast drei Viertel der
+Übertragungszeit und sind damit der wirksamste Ansatzpunkt.
+
+\begin{table}[htb]
+  \centering
+  \caption{Ressourcen einer Beispielseite und Übertragungszeit bei
+           \SI{10}{\mega\bit\per\second}.}
+  \label{tab:beispiel}
+  \begin{tabular}{lrr}
+    \toprule
+    Ressource & Datenmenge $S$ & Übertragungszeit $S/B$ \\
+    \midrule
+    HTML-Dokument     & \SI{25}{\kilo\byte}   & \SI{20}{\milli\second}   \\
+    Stylesheets (CSS) & \SI{60}{\kilo\byte}   & \SI{48}{\milli\second}   \\
+    JavaScript        & \SI{350}{\kilo\byte}  & \SI{280}{\milli\second}  \\
+    Bilder            & \SI{1200}{\kilo\byte} & \SI{960}{\milli\second}  \\
+    \midrule
+    Summe             & \SI{1635}{\kilo\byte} & \SI{1308}{\milli\second} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Mit den angenommenen Werten $t_\mathrm{DNS} = \SI{20}{\milli\second}$,
+$t_\mathrm{V} = \SI{60}{\milli\second}$ und
+$t_\mathrm{S} = \SI{100}{\milli\second}$ liefert
+Gleichung~\eqref{eq:ladezeit} eine Ladezeit von
+$t_\mathrm{L} = \SI{1488}{\milli\second}$, also rund \SI{1,5}{\second}.
+Halbiert man die Datenmenge der Bilder, sinkt sie auf etwa \SI{1,0}{\second}.
